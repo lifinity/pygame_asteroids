@@ -34,6 +34,11 @@ def main():
         updatable.update(dt)
 
         for asteroid in asteroids:
+            for shot in shots:
+                if asteroid.collides(shot):
+                    shot.kill()
+                    asteroid.split()
+
             if asteroid.collides(player):
                 print("Game over!")
                 sys.exit()
@@ -42,7 +47,7 @@ def main():
 
         for sprite in drawable:
             sprite.draw(screen)
-            
+
         pygame.display.flip()
 
         dt = clock.tick(FPS_LIMIT) / 1000
