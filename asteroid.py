@@ -1,11 +1,12 @@
 import pygame
 import random
 from circleshape import CircleShape
-from constants import COLOR_WHITE, DRAW_LINE_WIDTH, ASTEROID_MIN_RADIUS
+from constants import COLOR_WHITE, DRAW_LINE_WIDTH, ASTEROID_MIN_RADIUS, ASTEROID_BASE_POINTS
 
 class Asteroid(CircleShape):
     def __init__(self, x, y, radius):
         super().__init__(x, y, radius)
+        self.value = int(ASTEROID_MIN_RADIUS / radius) * ASTEROID_BASE_POINTS
 
     def draw(self, screen):
         pygame.draw.circle(screen, COLOR_WHITE, self.position, self.radius, DRAW_LINE_WIDTH)
